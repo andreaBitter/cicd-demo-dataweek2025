@@ -59,6 +59,13 @@ Before submitting changes, complete these mandatory testing steps locally:
    ```
    Runs the complete test suite to verify functionality.
 
+## Run the App
+
+   ```bash
+   python -m app.main
+   ````
+   Run the Gradio app locally.
+
 ## Contributing
 
 1. Create a new branch for your feature
