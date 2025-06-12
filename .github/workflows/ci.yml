@@ -26,7 +26,7 @@ jobs:
           environment-file: devops-conda-env.yml
           activate-environment: dataweek-devops-env
       - name: pytest
-        run: pytest tests
+        run: conda run -n dataweek-devops-env pytest tests
 
   deploy:
     name: deploy-app
@@ -39,4 +39,4 @@ jobs:
           environment-file: devops-conda-env.yml
           activate-environment: dataweek-devops-env
       - name: launch-gradio-app
-        run: python -m app.main
+        run: echo "Run deployment to remote server"
