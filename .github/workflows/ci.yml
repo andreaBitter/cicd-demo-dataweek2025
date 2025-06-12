@@ -1,0 +1,42 @@
+name: cicd-pipeline
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    name: linting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          environment-file: devops-conda-env.yml
+          activate-environment: dataweek-devops-env
+      - name: ruff
+        run: ruff check
+
+  test:
+    name: tests
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v3
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          environment-file: devops-conda-env.yml
+          activate-environment: dataweek-devops-env
+      - name: pytest
+        run: pytest tests
+
+  deploy:
+    name: deploy-app
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v3
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          environment-file: devops-conda-env.yml
+          activate-environment: dataweek-devops-env
+      - name: launch-gradio-app
+        run: python -m app.main

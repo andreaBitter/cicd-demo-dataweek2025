@@ -1,0 +1,12 @@
+name: dataweek-devops-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - pip
+  - pandas
+  - matplotlib
+  - ruff
+  - pip:
+    - pytest
+    - gradio

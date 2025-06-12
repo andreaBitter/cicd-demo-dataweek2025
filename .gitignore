@@ -1,0 +1,5 @@
+.vscode
+.gradio
+.ruff_cache
+.pytest_cache
+__pycache__
