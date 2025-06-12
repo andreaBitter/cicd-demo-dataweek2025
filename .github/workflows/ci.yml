@@ -25,6 +25,8 @@ jobs:
         with:
           environment-file: devops-conda-env.yml
           activate-environment: dataweek-devops-env
+      - name: test-coverage
+        run: conda run -n dataweek-devops-env python scripts/check_tests.py
       - name: pytest
         run: conda run -n dataweek-devops-env pytest tests
 
