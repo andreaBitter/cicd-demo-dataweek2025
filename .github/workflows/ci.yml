@@ -13,9 +13,7 @@ jobs:
           environment-file: devops-conda-env.yml
           activate-environment: dataweek-devops-env
       - name: ruff
-        run: |
-          conda activate dataweek-devops-env
-          python -m ruff check
+        run: conda run -n dataweek-devops-env ruff check
 
   test:
     name: tests
