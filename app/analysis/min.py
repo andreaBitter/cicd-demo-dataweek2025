@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def compute(series: pd.Series) -> float:
     """Compute the minimum of a pandas Series.
 
